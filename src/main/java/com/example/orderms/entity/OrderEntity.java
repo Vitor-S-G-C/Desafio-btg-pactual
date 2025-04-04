@@ -4,44 +4,42 @@ import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 import org.springframework.data.mongodb.core.mapping.FieldType;
+import org.springframework.data.mongodb.core.mapping.MongoId;
 
-
-import java.lang.annotation.Target;
 import java.math.BigDecimal;
-import java.util.Collection;
 import java.util.List;
 
-@Document(collection= "tb_orders")
+@Document(collection = "tb_orders")
 public class OrderEntity {
 
-    private Long orderID;
+    @MongoId
+    private Long orderId;
 
     @Indexed(name = "customer_id_index")
-    private Long custumeID;
+    private Long customerId;
 
     @Field(targetType = FieldType.DECIMAL128)
     private BigDecimal total;
 
-    private List<OrderItens> items;
+    private List<OrderItem> items;
 
-    public OrderEntity(Long orderID) {
-        this.orderID = orderID;
+    public OrderEntity() {
     }
 
-    public Long getOrderID() {
-        return orderID;
+    public Long getOrderId() {
+        return orderId;
     }
 
-    public void setOrderID(Long orderID) {
-        this.orderID = orderID;
+    public void setOrderId(Long orderId) {
+        this.orderId = orderId;
     }
 
-    public Long getCustumeID() {
-        return custumeID;
+    public Long getCustomerId() {
+        return customerId;
     }
 
-    public void setCustumeID(Long custumeID) {
-        this.custumeID = custumeID;
+    public void setCustomerId(Long customerId) {
+        this.customerId = customerId;
     }
 
     public BigDecimal getTotal() {
@@ -52,11 +50,11 @@ public class OrderEntity {
         this.total = total;
     }
 
-    public List<OrderItens> getItems() {
+    public List<OrderItem> getItems() {
         return items;
     }
 
-    public void setItems(List<OrderItens> items) {
+    public void setItems(List<OrderItem> items) {
         this.items = items;
     }
 }
