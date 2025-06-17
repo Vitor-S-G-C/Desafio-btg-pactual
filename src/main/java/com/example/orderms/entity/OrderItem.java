@@ -18,6 +18,12 @@ public class OrderItem {
         this.product = product;
     }
 
+    public OrderItem(String product, Integer quantity, BigDecimal price) {
+        this.product=product;
+        this.price=price;
+        this.quantity=quantity;
+    }
+
     public String getProduct() {
         return product;
     }
